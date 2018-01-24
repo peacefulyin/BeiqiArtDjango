@@ -39,7 +39,10 @@ class Teacher(models.Model):
     phone = models.IntegerField()
     mail = models.EmailField(null=True, blank=True)
     avatar = models.ImageField(upload_to="img/teacher/avatar", null=True, blank=True)
-    address = models.CharField(max_length=200)
+    address = models.CharField(max_length=200, null=True, blank=True)
+
+
+
 
     class Meta:
         verbose_name = '老师'
@@ -60,7 +63,7 @@ class Parent(models.Model):
     gender = models.IntegerField(default=2, choices=GENDER_CHOICES, verbose_name="性别")
     describe = models.TextField(null=True, blank=True)
     phone = models.IntegerField()
-    address = models.CharField(max_length=200)
+    address = models.CharField(max_length=200, null=True, blank=True)
 
     class Meta:
         verbose_name = '家长'
@@ -87,13 +90,13 @@ class Student(models.Model):
     join_date = models.DateTimeField(null=True, blank=True)
     end_date = models.DateTimeField(null=True, blank=True)
     avatar = models.ImageField(upload_to="img/student/avatar", null=True, blank=True)
-    address = models.CharField(max_length=200)
+    address = models.CharField(max_length=200,  null=True, blank=True)
     parent = models.ForeignKey(Parent, on_delete='CASCADE', null=True, blank=True)
     teacher = models.ManyToManyField(Teacher,blank=True)
 
     class Meta:
         verbose_name = '学生'
-        verbose_name_plural = '家长'
+        verbose_name_plural = '学生'
         db_table = 'student'
 
     def __str__(self):

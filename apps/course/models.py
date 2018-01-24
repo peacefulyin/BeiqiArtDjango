@@ -1,3 +1,4 @@
+from ckeditor_uploader.fields import RichTextUploadingField
 from django.db import models
 
 class Course(models.Model):
@@ -5,6 +6,7 @@ class Course(models.Model):
     create_time = models.DateTimeField(auto_now=True)
     update_time = models.DateTimeField(auto_now_add=True)
     describe = models.TextField(null=True, blank=True)
+    detail_page = RichTextUploadingField(blank=True, null=True, verbose_name="课程详情页", config_name='默认')
 
     class Meta:
         verbose_name = '课程'

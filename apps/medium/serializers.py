@@ -23,3 +23,4 @@ class VideoListSerializer(serializers.ModelSerializer):
     class Meta:
         model = VideoList
         fields = '__all__'
+        depth = 1

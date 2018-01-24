@@ -34,8 +34,8 @@ router.register(r'student', user_views.StudentViewSet)
 router.register(r'parent', user_views.ParentViewSet)
 router.register(r'course', course_views.CourseViewSet)
 router.register(r'courseSchedule', course_views.CourseScheduleViewSet)
-router.register(r'article', article_views.ArticleViewSet)
-router.register(r'videos', video_views.VideoListViewSet)
+router.register(r'article', article_views.ArticleViewSet, base_name='article')
+router.register(r'videoList', video_views.VideoListViewSet)
 router.register(r'enroll', course_views.EnrollViewSet)
 
 

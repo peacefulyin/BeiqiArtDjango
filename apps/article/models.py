@@ -4,8 +4,6 @@ from django.db import models
 from apps.user.models import User
 
 
-
-
 class Tag(models.Model):
     name = models.CharField(max_length=20)
     create_time = models.DateTimeField(auto_now=True)
