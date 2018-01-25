@@ -1,6 +1,8 @@
 from django.db import models
 
 from apps.course.models import Course
+from util.model_tools.common import img_upload_path_handler as upload_path_handler
+
 
 class User(models.Model):
     """
@@ -38,11 +40,8 @@ class Teacher(models.Model):
     join_time = models.DateTimeField(null=True, blank=True)
     phone = models.IntegerField()
     mail = models.EmailField(null=True, blank=True)
-    avatar = models.ImageField(upload_to="img/teacher/avatar", null=True, blank=True)
+    avatar = models.ImageField(upload_to=upload_path_handler, null=True, blank=True)
     address = models.CharField(max_length=200, null=True, blank=True)
-
-
-
 
     class Meta:
         verbose_name = '老师'
@@ -89,7 +88,7 @@ class Student(models.Model):
     describe = models.TextField(null=True, blank=True)
     join_date = models.DateTimeField(null=True, blank=True)
     end_date = models.DateTimeField(null=True, blank=True)
-    avatar = models.ImageField(upload_to="img/student/avatar", null=True, blank=True)
+    avatar = models.ImageField(upload_to=upload_path_handler, null=True, blank=True)
     address = models.CharField(max_length=200,  null=True, blank=True)
     parent = models.ForeignKey(Parent, on_delete='CASCADE', null=True, blank=True)
     teacher = models.ManyToManyField(Teacher,blank=True)

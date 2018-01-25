@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from rest_framework.pagination import PageNumberPagination
 
-from apps.medium.models import Video, VideoList
+from apps.medium.models import Video, VideoList, CommonCard, Banner
 
 
 class StandardResultSetPagination(PageNumberPagination):
@@ -22,5 +22,18 @@ class VideoSerializer(serializers.ModelSerializer):
 class VideoListSerializer(serializers.ModelSerializer):
     class Meta:
         model = VideoList
+        fields = '__all__'
+        depth = 1
+
+
+class CommonCardSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CommonCard
+        fields = '__all__'
+
+
+class BannerSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Banner
         fields = '__all__'
         depth = 1

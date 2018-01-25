@@ -1,12 +1,16 @@
 from ckeditor_uploader.fields import RichTextUploadingField
 from django.db import models
 
+from util.model_tools.common import img_upload_path_handler as upload_path_handler
+
+
 class Course(models.Model):
     name = models.CharField(max_length=20)
     create_time = models.DateTimeField(auto_now=True)
     update_time = models.DateTimeField(auto_now_add=True)
     describe = models.TextField(null=True, blank=True)
-    detail_page = RichTextUploadingField(blank=True, null=True, verbose_name="课程详情页", config_name='默认')
+    detail_page = RichTextUploadingField(blank=True, null=True, verbose_name="课程详情页")
+    img = models.ImageField(upload_to=upload_path_handler, null=True, blank=True)
 
     class Meta:
         verbose_name = '课程'
