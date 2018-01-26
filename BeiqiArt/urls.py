@@ -29,7 +29,7 @@ from apps.urls import registAll
 registAll()
 
 urlpatterns = [
-                  path('admin/', admin.site.urls),
+                  path('manage/admin', admin.site.urls),
                   path('api/', include(router.urls)),
                   url(r'^media/(?P<path>.*)$', serve, {"document_root": MEDIA_ROOT}),
                   url(r'^ckeditor/', include('ckeditor_uploader.urls')),

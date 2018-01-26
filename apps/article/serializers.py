@@ -40,6 +40,10 @@ class ArticleSerializer(serializers.HyperlinkedModelSerializer):
 
     def get_prev_item(self, obj):
         id = obj.id
+<<<<<<< HEAD
+=======
+        pub_date = obj.create_time
+>>>>>>> AliDev
         prev_items = Article.objects.filter(id__lt=id).order_by('-id')
 
         if prev_items:
@@ -51,8 +55,13 @@ class ArticleSerializer(serializers.HyperlinkedModelSerializer):
     def get_next_item(self, obj):
         id = obj.id
 
+<<<<<<< HEAD
         next_items = Article.objects.filter(id__gt=id)
 
+=======
+        pub_date = obj.create_time
+        next_items = Article.objects.filter(id__gt=id)
+>>>>>>> AliDev
         if next_items:
             next_item = next_items[0]
             return model_to_dict(next_item, fields=[field.name for field in next_item._meta.fields])
