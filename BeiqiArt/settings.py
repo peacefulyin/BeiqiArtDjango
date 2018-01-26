@@ -232,5 +232,5 @@ TEMPLATE_DIRS = (os.path.join(BASE_DIR, 'templates'),)
 
 MEDIA_URL = "/media/"
 
-MEDIA_ROOT = '/var/www/Beiqi/static'
-STATIC_ROOT = '/var/www/Beiqi/media'
+MEDIA_ROOT = '/var/www/Beiqi/media'
+STATIC_ROOT = '/var/www/Beiqi/static'
