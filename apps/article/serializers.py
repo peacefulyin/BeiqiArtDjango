@@ -39,9 +39,9 @@ class ArticleSerializer(serializers.HyperlinkedModelSerializer):
         depth = 1
 
     def get_prev_item(self, obj):
-
+        id = obj.id
         pub_date = obj.create_time
-        prev_items = Article.objects.filter(create_time__lt=pub_date).order_by('-create_time')
+        prev_items = Article.objects.filter(id__lt=id).order_by('-id')
 
         if prev_items:
             prev_item = prev_items[0]
@@ -50,8 +50,10 @@ class ArticleSerializer(serializers.HyperlinkedModelSerializer):
             return False
 
     def get_next_item(self, obj):
+        id = obj.id
+
         pub_date = obj.create_time
-        next_items = Article.objects.filter(create_time__gt=pub_date)
+        next_items = Article.objects.filter(id__gt=id)
         if next_items:
             next_item = next_items[0]
             return model_to_dict(next_item, fields=[field.name for field in next_item._meta.fields])
